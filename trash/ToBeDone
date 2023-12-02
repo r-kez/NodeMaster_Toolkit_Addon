@@ -1,0 +1,351 @@
+## TO BE DONE
+# Add Shader Nodes - Partialy Done
+# Add Favourite Option
+    #ShaderNodes - Done
+    #GeoNodes
+    #LuxCore
+    #Octane
+# Add GeoNodes  # Working on - Partialy Done
+# Add Lux Core Nodes # Working on - Partialy Done
+# Add Octane
+# Add Description!!
+
+#### Changes to be done
+
+## Organize files!!
+## Make only one Master File -- DONE
+## Rename files properly
+## Make internal list for the operators to clean the __init__ file -- DONE
+## RE Arrange the If Else of break column -- DONE
+## Implement 3D View Panel -- DONE
+
+## Done
+
+# Shader Nodes  |  Need to implement Multiple Images
+# Geometry Nodes | Need do implement Assets
+
+
+
+
+'''
+LuxCore Module - Maybe need some refactor later
+
+
+""" Helpers: https://github.com/dfelinto/blender/blob/master/release/scripts/startup/bl_operators/node.py"""
+
+# Example Operator / BASE
+
+
+class NODES_OT_TexImage_Add(bpy.types.Operator):
+    bl_idname = "nodes.tex_image_add"
+    bl_label = "Node Add Tool"
+    bl_space_type = 'NODE_EDITOR'
+    bl_context = "object"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_transform: bpy.props.BoolProperty(
+        name="Use Transform",
+        default=True,
+    )
+
+    def execute(self, context):
+        bpy.ops.node.add_node(use_transform=self.use_transform, type="ShaderNodeAddShader")
+        return {"FINISHED"}
+
+    def invoke(self, context, event):
+        self.store_mouse_cursor(context, event)
+        result = self.execute(context)
+
+        if self.use_transform and ('FINISHED' in result):
+            # removes the node again if transform is canceled
+            bpy.ops.node.translate_attach_remove_on_cancel('INVOKE_DEFAULT')
+
+        return result
+    
+    def store_mouse_cursor(self, context, event):
+    # Implement your cursor location storage logic here
+        pass
+    
+
+
+#https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/node.py#L135
+#https://docs.blender.org/api/4.0/bpy_types_enum_items/node_socket_type_items.html#rna-enum-node-socket-type-items
+
+
+
+
+
+# BSDF Velvet
+class NODES_OT_ShaderVelvet_Add(MASTER_OT_Transform):
+    bl_idname = "nodes.shader_velvet_add"
+    bl_label = "Node Add Tool"
+    bl_space_type = 'NODE_EDITOR'
+    bl_context = "object"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_transform: bpy.props.BoolProperty(
+        name="Use Transform",
+        default=True,
+    )
+
+    def execute(self, context):
+        bpy.ops.node.add_node(use_transform=self.use_transform, type="ShaderNodeBsdfVelvet")
+        return {"FINISHED"}
+
+
+#Geometry Nodes -- Hair -- Main --- 6 Lists
+
+
+class GEONODES_PT_HairMainPanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairMainPanel"
+    bl_label = "Hair"
+    #bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 39
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        #layout = self.layout
+
+        return None
+
+class GEONODES_PT_HairDeformationPanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairDeformationPanel"
+    bl_label = "Deformation"
+    bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 40
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        layout = self.layout
+
+        # Boolean Button to Split the column in 2
+        scene = context.scene
+
+        if scene.Break_Col:
+            BoolRes = 2        
+        else:
+            BoolRes = 1
+
+        # grid layout
+        grid = layout.grid_flow(row_major=False, columns=BoolRes, align=True)
+
+        grid.operator("nodes.hair_blend_hair_curves_add", text="Blend Hair Curves")            # Blend Hair Curves
+        grid.operator("nodes.layout_reroute_add", text="Reroute")        # Reroute
+
+        return None
+
+class GEONODES_PT_HairGenerationPanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairGenerationPanel"
+    bl_label = "Generation"
+    bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 41
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        layout = self.layout
+
+        # Boolean Button to Split the column in 2
+        scene = context.scene
+
+        if scene.Break_Col:
+            BoolRes = 2        
+        else:
+            BoolRes = 1
+
+        # grid layout
+        grid = layout.grid_flow(row_major=False, columns=BoolRes, align=True)
+
+        grid.operator("nodes.layout_frame_add", text="Frame")            # Frame
+        grid.operator("nodes.layout_reroute_add", text="Reroute")        # Reroute
+
+        return None
+
+class GEONODES_PT_HairGuidesPanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairGuidesPanel"
+    bl_label = "Guides"
+    bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 42
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        layout = self.layout
+
+        # Boolean Button to Split the column in 2
+        scene = context.scene
+
+        if scene.Break_Col:
+            BoolRes = 2        
+        else:
+            BoolRes = 1
+
+        # grid layout
+        grid = layout.grid_flow(row_major=False, columns=BoolRes, align=True)
+
+        grid.operator("nodes.layout_frame_add", text="Frame")            # Frame
+        grid.operator("nodes.layout_reroute_add", text="Reroute")        # Reroute
+
+        return None
+
+class GEONODES_PT_HairReadPanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairReadPanel"
+    bl_label = "Read"
+    bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 43
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        layout = self.layout
+
+        # Boolean Button to Split the column in 2
+        scene = context.scene
+
+        if scene.Break_Col:
+            BoolRes = 2        
+        else:
+            BoolRes = 1
+
+        # grid layout
+        grid = layout.grid_flow(row_major=False, columns=BoolRes, align=True)
+
+        grid.operator("nodes.layout_frame_add", text="Frame")            # Frame
+        grid.operator("nodes.layout_reroute_add", text="Reroute")        # Reroute
+
+        return None
+
+class GEONODES_PT_HairUtilityesPanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairUtilityesPanel"
+    bl_label = "Utility"
+    bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 44
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        layout = self.layout
+
+        # Boolean Button to Split the column in 2
+        scene = context.scene
+
+        if scene.Break_Col:
+            BoolRes = 2        
+        else:
+            BoolRes = 1
+
+        # grid layout
+        grid = layout.grid_flow(row_major=False, columns=BoolRes, align=True)
+
+        grid.operator("nodes.layout_frame_add", text="Frame")            # Frame
+        grid.operator("nodes.layout_reroute_add", text="Reroute")        # Reroute
+
+        return None
+
+class GEONODES_PT_HairWritePanel(bpy.types.Panel):
+    bl_idname = "GEONODES_PT_HairWritePanel"
+    bl_label = "Write"
+    bl_parent_id = "GEONODES_PT_HairMainPanel"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    bl_context = "object"
+    bl_description = "All nodes in a easy way to access."
+    bl_options = {'DEFAULT_CLOSED'}
+    bl_order = 45
+
+    @classmethod
+    def poll(self, context):
+        return context.area.ui_type == "GeometryNodeTree"    
+
+    def draw(self, context):
+        layout = self.layout
+
+        # Boolean Button to Split the column in 2
+        scene = context.scene
+
+        if scene.Break_Col:
+            BoolRes = 2        
+        else:
+            BoolRes = 1
+
+        # grid layout
+        grid = layout.grid_flow(row_major=False, columns=BoolRes, align=True)
+
+        grid.operator("nodes.layout_frame_add", text="Frame")            # Frame
+        grid.operator("nodes.layout_reroute_add", text="Reroute")        # Reroute
+
+        return None
+
+
+
+
+
+
+
+
+
+
+
+       if scene.show_filtered_images:
+            filtered_images = [image for image in bpy.context.scene.image_list if image.name.lower().endswith(('.erg', '.hrd'))]
+        else:
+            filtered_images = bpy.context.scene.image_list
+
+        if filtered_images:
+            selected_image = filtered_images[bpy.context.scene.image_list_index]
+            layout.label(text=f"Selected: {selected_image.name}")
+        else:
+            layout.label(text="No images found based on the filter.")
+
+'''

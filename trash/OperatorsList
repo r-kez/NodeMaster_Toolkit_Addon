@@ -1,0 +1,1316 @@
+#Blender Shader Nodes Operators
+
+
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeInvert")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeLightFalloff")
+bpy.ops.node.add_node(use_transform=True, settings=[{"name":"data_type", "value":"'RGBA'"}], type="ShaderNodeMix")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeRGBCurve")
+'''
+'''
+bpy.ops.node.nw_add_multiple_images()
+bpy.ops.node.nw_add_sequence()
+'''
+
+#TEXTURE  
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexBrick")    
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexChecker")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexEnvironment")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexGradient")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexIES")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexImage")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexMagic")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexMusgrave")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexNoise")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexPointDensity")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexSky")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexVoronoi")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexWave")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexWhiteNoise")
+'''
+#CONVERTER
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBlackbody")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeClamp")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeValToRGB")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeCombineColor")  
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeCombineXYZ")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeFloatCurve")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMapRange")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMath")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMix")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeRGBToBW")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeSeparateColor")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeSeparateXYZ")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorMath")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeWavelength")  
+'''  
+
+#INPUT ATTRIBUTE 
+'''
+bpy.ops.node.nw_add_attr_node(attr_name=".select_poly")
+bpy.ops.node.nw_add_attr_node(attr_name=".vs.UVMap")
+bpy.ops.node.nw_add_attr_node(attr_name=".corner_edge")
+bpy.ops.node.nw_add_attr_node(attr_name=".select_vert")
+bpy.ops.node.nw_add_attr_node(attr_name=".corner_vert")
+bpy.ops.node.nw_add_attr_node(attr_name="position")
+bpy.ops.node.nw_add_attr_node(attr_name=".es.UVMap")
+bpy.ops.node.nw_add_attr_node(attr_name=".select_edge")
+bpy.ops.node.nw_add_attr_node(attr_name=".edge_verts")
+bpy.ops.node.nw_add_attr_node(attr_name="UVMap")
+'''
+
+#INPUT
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeAmbientOcclusion")  
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeAttribute")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBevel")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeCameraData")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVertexColor")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeHairInfo")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeFresnel")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeNewGeometry")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeLayerWeight")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeLightPath")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeObjectInfo")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeParticleInfo")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodePointInfo")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeRGB")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTangent")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexCoord")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeUVMap")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeValue")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVolumeInfo")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeWireframe")
+'''
+
+#OUTPUT
+
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeOutputAOV")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeOutputLight")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeOutputMaterial")
+'''
+
+#Shader
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeAddShader")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfAnisotropic")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfDiffuse")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeEmission")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfGlass")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfGlossy")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfHair")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeHoldout")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMixShader")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfPrincipled")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfHairPrincipled")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVolumePrincipled")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfRefraction")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfSheen") **
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeSubsurfaceScattering")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfToon")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfTranslucent")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfTransparent")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBsdfVelvet")////////////
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVolumeAbsorption")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVolumeScatter")
+'''
+
+#VECTOR
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeBump")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeDisplacement")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMapping")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeNormal")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeNormalMap")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorCurve")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorDisplacement")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorRotate")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorTransform")
+
+
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeScript")
+bpy.ops.node.add_node(use_transform=True, type="NodeFrame")
+bpy.ops.node.add_node(use_transform=True, type="NodeReroute")
+'''
+
+#########################################################################
+
+#Geometry Nodes
+
+
+
+#Attribute Statistic
+'''
+Domain Size
+Blur Attribute
+Capture Attribute
+Remove Named Attribute
+Store Named Attribute
+
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeAttributeStatistic")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeAttributeDomainSize")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeBlurAttribute")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCaptureAttribute")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeRemoveAttribute")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeStoreNamedAttribute")
+'''
+
+#Constant
+'''
+Boolean
+Color
+Image
+Integer
+Material
+Vatue
+Vector
+
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeInputBool")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeInputColor")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputImage")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeInputInt")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMaterial")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeInputString")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeValue")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeStoreNamedAttribute")
+'''
+
+#Group
+'''
+bpy.ops.node.add_node(use_transform=True, type="NodeGroupInput")
+'''
+#Scene
+'''
+Collection Info
+Image Info
+Is Viewport
+Object Info
+Scene Time
+Self Object
+
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCollectionInfo")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeImageInfo")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeIsViewport")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeObjectInfo")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputSceneTime")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSelfObject")
+'''
+#Output
+'''
+bpy.ops.node.add_node(use_transform=True, type="NodeGroupOutput")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeViewer")
+'''
+
+### GEOMETRY
+
+#Geometry Read
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputID")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputIndex")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputNamedAttribute")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputNormal")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputPosition")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputRadius")
+'''
+#Geometry Sample
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeProximity")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeIndexOfNearest")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeRaycast")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSampleIndex")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSampleNearest")
+'''
+
+#Geometry write
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetID")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetPosition")
+'''
+
+#Operations
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeBoundBox")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeConvexHull")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeDeleteGeometry")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeDuplicateElements")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMergeByDistance")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeTransform")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSeparateComponents")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSeparateGeometry")
+'''
+#Main panel geometry
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeGeometryToInstance")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeJoinGeometry")
+'''
+
+### Curve
+
+#Read
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputCurveHandlePositions")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveLength")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputTangent")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputCurveTilt")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveEndpointSelection")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveHandleTypeSelection")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputSplineCyclic")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSplineLength")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSplineParameter")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputSplineResolution")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSampleCurve")
+'''
+
+#curve Write
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetCurveNormal")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetCurveRadius")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetCurveTilt")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetCurveHandlePositions")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveSetHandles")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetSplineCyclic")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetSplineResolution")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveSplineType")
+'''
+
+#Operations
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveToMesh")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveToPoints")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeDeformCurvesOnSurface")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeFillCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeFilletCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInterpolateCurves")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeResampleCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeReverseCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSubdivideCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeTrimCurve")
+'''
+#Primitives
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveArc")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurvePrimitiveBezierSegment")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurvePrimitiveCircle")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurvePrimitiveLine")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveSpiral")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveQuadraticBezier")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurvePrimitiveQuadrilateral")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveStar")
+'''
+#Topology
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCurveOfPoint")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeOffsetPointInCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodePointsOfCurve")
+'''
+
+#Instances
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInstanceOnPoints")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInstancesToPoints")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeRealizeInstances")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeRotateInstances")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeScaleInstances")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeTranslateInstances")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputInstanceRotation")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputInstanceScale")
+'''
+
+#### MESH
+
+#read
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshEdgeAngle")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshEdgeNeighbors")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshEdgeVertices")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeEdgesToFaceGroups")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshFaceArea")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshFaceSetBoundaries")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshFaceNeighbors")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshFaceIsPlanar")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputShadeSmooth")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputEdgeSmooth")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshIsland")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputShortestEdgePaths")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMeshVertexNeighbors")
+'''
+
+#sample
+
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSampleNearestSurface")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSampleUVSurface")
+'''
+#write
+
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetShadeSmooth")
+'''
+#operations
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeDualMesh")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeEdgePathsToCurves")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeEdgePathsToSelection")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeExtrudeMesh")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeFlipFaces")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshBoolean")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshToCurve")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshToPoints")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshToVolume")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeScaleElements")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSplitEdges")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSubdivideMesh")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSubdivisionSurface")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeTriangulate")
+'''
+#primitives
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshCone")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshCube")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshCylinder")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshGrid")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshIcoSphere")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshCircle")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshLine")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMeshUVSphere")
+'''
+#topology
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCornersOfEdge")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCornersOfFace")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeCornersOfVertex")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeEdgesOfCorner")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeEdgesOfVertex")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeFaceOfCorner")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeOffsetCornerInFace")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeVertexOfCorner")
+'''
+#UV
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeUVPackIslands")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeUVUnwrap")
+'''
+
+
+####POINT
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeDistributePointsInVolume")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeDistributePointsOnFaces")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodePoints")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodePointsToCurves")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodePointsToVertices")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodePointsToVolume")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetPointRadius")
+'''
+#VOLUME
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeVolumeCube")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeVolumeToMesh")
+'''
+#Simulation
+'''
+bpy.ops.node.add_simulation_zone(use_transform=True)
+'''
+
+#Material
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeReplaceMaterial")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeInputMaterialIndex")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeMaterialSelection")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetMaterial")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSetMaterialIndex")
+'''
+#Texture
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexBrick")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexChecker")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexGradient")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeImageTexture")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexMagic")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexMusgrave")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexNoise")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexVoronoi")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexWave")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeTexWhiteNoise")
+'''
+
+### toll exclusive
+
+#Input > Scene
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeTool3DCursor") -+-----------
+'''
+#Mesh > read
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeToolFaceSet")-----------
+'''
+#Geometry > Read
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeToolSelection")---------
+'''
+#Mesh write
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeToolSetFaceSet")--------------
+'''
+#Geometry > Write
+'''bpy.ops.node.add_node(use_transform=True, type="GeometryNodeToolSetSelection")-------
+'''
+
+##Group 
+'''
+bpy.ops.node.add_node(use_transform=True, type="NodeGroupInput")
+bpy.ops.node.add_node(use_transform=True, type="NodeGroupOutput")
+'''
+#Layout
+'''
+bpy.ops.node.add_node(use_transform=True, type="NodeFrame")
+bpy.ops.node.add_node(use_transform=True, type="NodeReroute")
+'''
+
+#Hair 6 Lists
+
+#Deformation
+
+'''
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Blend Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Displace Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Frizz Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Hair Curves Noise")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Roll Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Rotate Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Shrinkwrap Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Smooth Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Straighten Hair Curves")
+bpy.ops.node.add_group_asset(asset_library_type='ESSENTIALS', asset_library_identifier="", relative_asset_identifier="geometry_nodes\\procedural_hair_node_assets.blend\\NodeTree\\Trim Hair Curves")
+'''
+#Generation
+
+#Guides
+
+#Read 
+
+#Utility
+
+#Write
+
+
+
+
+############################### LuxCore
+'''
+bpy.context.area.ui_type = 'luxcore_material_nodes'
+
+
+Materials 16 Itens
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatDisney")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatMix")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatMatte")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatMatteTranslucent")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatMetal")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatMirror")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatGlossy2")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatGlossyTranslucent")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatGlossyCoating")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatGlass")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatNull")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatCarpaint")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatCloth")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatVelvet")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatTwoSided")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatFrontBackOpacity")
+
+volume 3 itens
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeVolClear")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeVolHomogeneous")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeVolHeterogeneous")
+
+Texture 14 itens
+
+bpy.ops.luxcore.import_multiple_images()
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexImagemap")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBrick")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexWireframe")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexDots")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexfBM")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexCheckerboard2D")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexCheckerboard3D")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexMarble")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexWrinkled")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexHitpoint")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexSmoke")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexOpenVDB")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexFresnel")
+
+
+Texure Blender 10
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderBlend")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderClouds")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderDistortedNoise")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderMagic")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderMarble")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderMusgrave")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderNoise")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderStucci")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderWood")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlenderVoronoi")
+
+Math 7
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexMath")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexColorMix")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexVectorMath")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexDotProduct")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexSplitFloat3")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexMakeFloat3")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexRemap")
+
+Utils 17
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBump")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBand")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexDistort")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexHSV")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBrightContrast")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexInvert")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexConstfloat1")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexConstfloat3")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexIORPreset")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexHitpointInfo")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexPointiness")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexObjectID")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexRandomPerIsland")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexTimeInfo")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexUV")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexRandom")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBombing")
+
+Mapping 5 Itens
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexMapping2D")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexMapping3D")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexTriplanar")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexTriplanarBump")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexTriplanarNormalmap")
+
+Light 4 Itens
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatEmission")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexLampSpectrum")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexBlackbody")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTexIrregularData")
+
+Shape Modifiers 5 Itens
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeShapeSubdiv")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeShapeHeightDisplacement")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeShapeVectorDisplacement")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeShapeSimplify")
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeShapeHarlequin")
+
+Pointer 1 Item
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeTreePointer")
+
+Output 1 Item
+
+bpy.ops.node.add_node(use_transform=True, type="LuxCoreNodeMatOutput")
+
+Layout
+
+bpy.ops.node.add_node(use_transform=True, type="NodeFrame")
+bpy.ops.node.add_node(use_transform=True, type="NodeReroute")
+'''
+
+########################################################## Volumes
+
+#Utilities 6 Lists
+
+#Utilities Color 5
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeValToRGB")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeRGBCurve")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeCombineColor")
+bpy.ops.node.add_node(use_transform=True, settings=[{"name":"data_type", "value":"'RGBA'"}], type="ShaderNodeMix")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeSeparateColor")
+'''
+#Utilities Text 7
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeStringJoin")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeReplaceString")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeSliceString")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeStringLength")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeStringToCurves")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeValueToString")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeInputSpecialCharacters")
+'''
+
+#Utilities Vector 6
+'''
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorCurve")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorMath")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeVectorRotate")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeCombineXYZ")
+bpy.ops.node.add_node(use_transform=True, settings=[{"name":"data_type", "value":"'VECTOR'"}], type="ShaderNodeMix")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeSeparateXYZ")
+'''
+#Utilities Field 3
+'''
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeAccumulateField")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeFieldAtIndex")
+bpy.ops.node.add_node(use_transform=True, type="GeometryNodeFieldOnDomain")
+'''
+#Utilities Math 8
+'''
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeBooleanMath")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeClamp")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeCompare")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeFloatCurve")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeFloatToInt")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMapRange")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMath")
+bpy.ops.node.add_node(use_transform=True, type="ShaderNodeMix")
+'''
+#Utilities Rotation 10
+'''
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeAlignEulerToVector")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeAxisAngleToRotation")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeEulerToRotation")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeInvertRotation")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeRotateEuler")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeRotateVector")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeRotationToAxisAngle")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeRotationToEuler")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeRotationToQuaternion")
+bpy.ops.node.add_node(use_transform=True, type="FunctionNodeQuaternionToRotation")
+'''
+
+
+#Random Value 1 
+'''bpy.ops.node.add_node(use_transform=True, type="FunctionNodeRandomValue")
+'''
+#Repeat Zone 1
+'''bpy.ops.node.add_repeat_zone(use_transform=True)
+'''
+#Switch 1
+'''bpy.ops.node.add_node(use_transform=True, type="GeometryNodeSwitch")
+'''
+
+################ OCTANE
+
+
+
+
+
+## GENERAL
+
+# Output -- 1 Iten
+"""
+Render AOV Output
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVGroupOutputNode")
+
+"""
+# Octane Advanced Tools -- 4 Itens
+"""
+Camera Data
+bpy.ops.node.add_node(use_transform=True, type="OctaneCameraData")
+
+Object Data
+bpy.ops.node.add_node(use_transform=True, type="OctaneObjectData")
+
+OctaneScriptGraph(êETA)
+bpy.ops.node.add_node(use_transform=True, type="OctaneScriptGraph")
+
+Octa neProxy(BETA)
+bpy.ops.node.add_node(use_transform=True, type="OctaneProxy")
+
+"""
+# Octane Render Settings -- 2 Itens
+"""
+Camera imager
+bpy.ops.node.add_node(use_transform=True, type="OctaneCameraImager")
+
+OCIO color space
+bpy.ops.node.add_node(use_transform=True, type="OctaneOCIOColorSpace")
+
+
+"""
+# Octane Values -- 25 Itens
+'''
+Bool value
+bpy.ops.node.add_node(use_transform=True, type="OctaneBoolValue")
+
+Int value
+bpy.ops.node.add_node(use_transform=True, type="OctaneIntValue")
+
+Float value
+bpy.ops.node.add_node(use_transform=True, type="OctaneFloatValue")
+
+String value
+bpy.ops.node.add_node(use_transform=True, type="OctaneStringValue")
+
+Light IDS
+bpy.ops.node.add_node(use_transform=True, type="OctaneLightIDBitValue")
+
+Sun direction
+bpy.ops.node.add_node(use_transform=True, type="OctaneSunDirection")
+
+
+## Converter
+Float to int
+bpy.ops.node.add_node(use_transform=True, type="OctaneConverterFloatToInt")
+
+Int to float
+bpy.ops.node.add_node(use_transform=True, type="OctaneConverterIntToFloat")
+
+## Operators
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorBinaryMathOperation")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorBooleanLogicOperator")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorFloatRelationalOperator")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorIntRelationalOperator")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorRange")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorRotate")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOperatorUnaryMathOperation")
+
+
+
+## Utility
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneBoolSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneFloatSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneIntSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneStringSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneUtilityFloatComponentPicker")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneUtilityFloatIf")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneUtilityFloatMerger")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneUtilityIntComponentPicker")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneUtilityIntIf")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneUtilityIntMerger")
+
+
+
+"""
+# Octane Pisplacement -- 4 Itens
+"""
+bpy.ops.node.add_node(use_transform=True, type="OctaneTextureDisplacement")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneVertexDisplacement")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneVertexDisplacementMixer")
+
+
+
+## Utility
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneDisplacementSwitch")
+
+"""
+# Octane Projection -- 15 itens
+"""
+bpy.ops.node.add_node(use_transform=True, type="OctaneBox")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneColorToUVW")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneCylindrical")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneDistortedMeshUV")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneInstancePosition")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneMatCap")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneMeshUVProjection")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOSLDelayedUV")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOSLProjection")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctanePerspective")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneSamplePosToUV")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneSpherical")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneTriplanar")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneXYZToUVW")
+
+
+##Utility
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneProjectionSwitch")
+
+"""
+# Octane Transform -- 7 Itens
+"""
+bpy.ops.node.add_node(use_transform=True, type="Octane2DTransformation")
+
+
+bpy.ops.node.add_node(use_transform=True, type="Octane3DTransformation")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneConverterLookAtTransform")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneRotation")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneScale")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneTransformValue")
+
+
+## Utility
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneTransformSwitch")
+
+"""
+
+### bpy.context.area.ui_type = 'octane_composite_nodes' EXCLUSIVE
+
+
+# Octane Compositor -- 3 Itens + 7 Lists
+"""
+bpy.ops.node.add_node(use_transform=True, type="OctaneBlendingSettings")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsOutputAOV")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsOutputAOVGroup")
+
+## Blend -- 4 Itens
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsImageFile")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsLayerGroup")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsRenderAOV")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsSolidColor")
+
+
+## Effects - Color -- 13 Itens
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAdjustBrightness")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAdjustContrastSDROnly")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAdjustHue")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAdjustSaturation")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAdjustWhiteBalance")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsApplyCameraResponseCurveSDROnly")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsApplyCustomCurve")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsApplyGammaCurveSDROnly")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsApplyLUT")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsApplyOCIOLook")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsChannelClamp")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsChannelInvertSDROnly")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsChannelMapRange")
+
+
+
+## Effects - Display -- 5 Itens
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsConvertForSDRDisplayACES")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsConvertForSDRDisplayAgX")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsConvertForSDRDisplayBasic")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsConvertForSDRDisplayOCIO")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsConvertForSDRDisplaySmooth")
+
+
+## Effects - Opacity -- 3 Itens
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAdjustOpacity")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsMaskWithCryptomatte")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsMaskWithLayerGroup")
+
+
+## Effects - Processing -- 7 Itens
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAddBloom") 
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAddChromaticAberration")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAddGlare")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAddLensFlare")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsAddVignette")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsBlur")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsRemoveHotPixels")
+
+
+## Legacy -- 1 Item
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsLightMixerOutputAOV")
+
+## Utility
+bpy.ops.node.add_node(use_transform=True, type="OctaneBlendingSettingsSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVGroupSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVLayerSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVSwitch")
+
+
+bpy.ops.node.add_node(use_transform=True, type="OctaneOutputAOVsLayerGroupPassThrough")
+
+"""
+
+
+
+#### bpy.context.area.ui_type = 'octane_render_aov_nodes' EXCLUSIVE
+
+# Render AOV -- 2 Itens + 8 Lists
+"""
+Render AOV group
+bpy.ops.node.add_node(use_transform=True, type="OctaneRenderAOVGroup")
+
+Render AOV switch
+bpy.ops.node.add_node(use_transform=True, type="OctaneRenderAOVSwitch")
+
+
+## Auxiliary -- 7 Itens
+Cryptomatte AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneCryptomatteAOV")
+
+Irradiance AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneIrradianceAOV")
+
+Light direction AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneLightDirectionAOV")
+
+Noise AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneNoiseAOV")
+
+post processing AOV
+bpy.ops.node.add_node(use_transform=True, type="OctanePostProcessingAOV")
+
+Postfx media AOV
+bpy.ops.node.add_node(use_transform=True, type="OctanePostfxMediaAOV")
+
+Shadow AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneShadowAOV")
+
+
+## Beauty surfaces
+Diffuse AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDiffuseAOV")
+
+Diffuse direct AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDiffuseDirectAOV")
+
+Diffuse filter (beauty) AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDiffuseFilterBeautyAOV")
+
+Diffuse indirect AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDiffuseIndirectAOV")
+
+Emitters AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneEmittersAOV")
+
+Environment AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneEnvironmentAOV")
+
+Reflection AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneReflectionAOV")
+
+Reflection direct AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneReflectionDirectAOV")
+
+Reflection filter (beauty) AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneReflectionFilterBeautyAOV")
+
+Reflection indirect AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneReflectionIndirectAOV")
+
+Refraction AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneRefractionAOV")
+
+Refraction filter (beauty) AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneRefractionFilterBeautyAOV")
+
+Subsurface scattering AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneSubsurfaceScatteringAOV")
+
+Transmission AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneTransmissionAOV")
+
+Transmission filter (beauty) AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneTransmissionAOV")
+
+
+## Beauty volumes
+Volume AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneVolumeAOV")
+
+Volume emission AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneVolumeEmissionAOV")
+
+Volume mask AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneVolumeMaskAOV")
+
+Volume Z-depth back AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneVolumeZDepthBackAOV")
+
+Volume Z-depth front AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneVolumeZDepthFrontAOV")
+
+## Custom
+Custom AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneCustomAOV")
+
+Global texture AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneGlobalTextureAOV")
+
+
+## Denoised
+
+Denoised diffuse direct AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedDiffuseDirectAOV")
+
+Denoised diffuse indirect AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedDiffuseIndirectAOV")
+
+Denoised emission AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedEmissionAOV")
+
+Denoised reflection direct AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedReflectionDirectAOV")
+
+Denoised reflection indirect AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedReflectionIndirectAOV")
+
+Denoised remainder AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedRemainderAOV")
+
+Denoised volume AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedVolumeAOV")
+
+Denoised volume emission AOV
+bpy.ops.node.add_node(use_transform=True, type="OctaneDenoisedVolumeEmissionAOV")
+
+## Info
+Ambient occlusion AOV
+
+
+Baking group ID AOV
+
+
+Diffuse filter (info) AOV
+
+
+Index of refraction AOV
+
+
+Light pass ID AOV
+
+
+Material ID AOV
+
+
+Motion vector AOV
+
+
+Normal (geometric) AOV
+
+
+Normal (shading) AOV
+
+
+Normal (smooth) AOV
+
+
+Normal Cangent) AOV
+
+
+Object ID AOV
+
+
+Object layer color AOV
+
+
+opacity AOV
+
+
+Position AOV
+
+
+Reflection filter (info) AOV
+
+
+Refraction filter (info) AOV
+
+
+Render layer ID AOV
+
+
+Render layer mask AOV
+
+
+Roughness AOV
+
+
+Texture tangent AOV
+
+
+Transmission filter (info) AOV
+
+
+W coordinates AOV
+
+
+Wireframe AOV
+
+
+Z depth AOV
+
+
+## Light
+Light AOV
+
+
+Light direct AOV
+
+
+Lbht indirect AOV
+
+
+
+## Render layer
+
+Plack layer Shadows AOV
+
+
+kayer reflections AOV
+
+
+Layer shadows AOV
+
+
+"""
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,536 @@
+'''
+
+
+bl_info = {
+    "name": "NodeMaster Toolkit",
+    "description": "Single line explaining what this script exactly does.",
+    "author": "R_Kez",
+    "version": (1, 0),
+    "blender": (3, 6, 0),
+    "location": "View3D > N-Panel, Node Editor > N-Panel",
+    "warning": "", # used for warning icon and text in addons panel
+    "doc_url": "Yet to be done",
+    "tracker_url": "",
+    "support": "COMMUNITY",
+    "category": "UI Utilities",
+}
+
+
+import bpy
+
+bpy.types.Scene.filter_image_type = bpy.props.BoolProperty(
+    name="Filter Image Type",
+    description="Enable image filtering by type",
+    default=False
+)
+
+
+
+#                                                        """    _________________OPERATORS_________________    """
+
+####### FLIP RESOLUTION START
+
+class RENDER_OT_Res_Flip(bpy.types.Operator):
+    bl_idname = "render.res_flip"
+    bl_label = "Flip render resolution"
+    bl_options = {'UNDO'}
+                    
+    def execute(self, context):
+           
+        res_x = context.scene.render.resolution_x 
+        res_y = context.scene.render.resolution_y    
+                
+        context.scene.render.resolution_x = res_y
+        context.scene.render.resolution_y = res_x
+            
+        return ({'FINISHED'})
+
+        
+####### FLIP RESOLUTION END
+
+"""-------------------------------------------------------------------------------------"""
+
+####### Boolean Button OPERATOR START
+
+
+class NODE_OT_AddBoolSocket(bpy.types.Operator):
+    bl_idname = "node.add_boolean_socket"
+    bl_label = "Add a new socket type Boolean"
+    bl_options = {'UNDO'}
+    
+    def execute(self, context):
+        
+        node = context.active_node
+
+        # Check if the active node is a group or composite node
+        if node.type in ('GROUP', 'COMPOSITE'):
+            node_group = node.node_tree
+            node_group.nodes.active = node
+            input_socket = node_group.inputs.new('NodeSocketBool', 'Boolean Input')
+            input_socket.default_value = False
+       
+        else:
+           
+            self.report({'ERROR'}, "Cannot add input to built-in node")
+       
+        return {'FINISHED'}
+
+
+
+####### Boolean Button OPERATOR END
+
+"""-------------------------------------------------------------------------------------"""
+
+####### Integer Button OPERATOR START
+
+
+class NODE_OT_AddIntegerSocket(bpy.types.Operator):
+    bl_idname = "node.add_integer_socket"
+    bl_label = "Add a new socket type Integer"
+    bl_options = {'UNDO'}
+    
+    def execute(self, context):
+        
+        node = context.active_node
+
+        # Check if the active node is a group or composite node
+        if node.type in ('GROUP', 'COMPOSITE'):
+            node_group = node.node_tree
+            node_group.nodes.active = node
+            input_socket = node_group.inputs.new('NodeSocketIntUnsigned', 'Integer Input')
+                   
+        else:
+           
+            self.report({'ERROR'}, "Cannot add input to built-in node")
+       
+        return {'FINISHED'}
+
+
+####### Integer Button OPERATOR END
+
+"""-------------------------------------------------------------------------------------"""
+
+####### Resolution Percentage OPERATOR START
+
+
+class RENDER_OT_Perfcentage(bpy.types.Operator):
+    bl_idname = "render.percentage_operator"
+    bl_label = "Display Render Final Resolution"
+    
+    def execute(self, context):
+    
+        res_percentage = context.scene.render.resolution_percentage
+        res_x = context.scene.render.resolution_x
+        res_y = context.scene.render.resolution_y
+
+
+
+####### Resolution Percentage OPERATOR END
+
+"""-------------------------------------------------------------------------------------"""
+
+####### Image List OPERATOR START
+
+if not hasattr(bpy.types.Scene, "filter_image_type"):
+    bpy.types.Scene.filter_image_type = bpy.props.BoolProperty(
+        name="Filter Image Type",
+        description="Enable image filtering by type",
+        default=False
+    )
+
+class IMAGE_OT_FilterImageType(bpy.types.Operator):
+    bl_idname = "object.filter_image_type"
+    bl_label = "Filter EXR and HDR images"
+
+    def execute(self, context):
+        scene = context.scene
+
+        # Filtra as imagens que terminam com .exr ou .hdr
+        scene.filtered_images.clear()  # Limpa a lista filtrada antes de adicionar as imagens filtradas
+        for image in scene.image_list:
+            if image.name.lower().endswith((".exr", ".hdr")):
+                filtered_image = scene.filtered_images.add()
+                filtered_image.name = image.name
+                filtered_image.width = image.width
+                filtered_image.height = image.height
+
+        return {"FINISHED"}
+
+####### Image List OPERATOR END
+
+"""-------------------------------------------------------------------------------------"""
+
+
+####### Image List OPERATOR START CHAT GPT
+
+class OpenImageFileBrowserOperator(bpy.types.Operator):
+    bl_idname = "object.open_image_file_browser"
+    bl_label = "Open Image File Browser"
+    bl_options = {'UNDO'}
+    
+    filepath: bpy.props.StringProperty(subtype="FILE_PATH")
+
+    def execute(self, context):
+        # Carrega a imagem selecionada no Blender
+        bpy.ops.image.open(filepath=self.filepath, relative_path=True, filter_image=True)
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
+
+    
+class UpdateImageListOperator(bpy.types.Operator):
+    bl_idname = "object.update_image_list"
+    bl_label = "Update Image List"
+    bl_options = {'UNDO'}
+    
+    def execute(self, context):
+        # Atualiza a lista de imagens na cena
+        scene = context.scene
+        scene.image_list.clear()
+        for image in bpy.data.images:
+            item = scene.image_list.add()
+            item.name = image.name
+            item.width = image.size[0]
+            item.height = image.size[1]
+        return {'FINISHED'}
+
+class LinkSelectedImageToEnvironmentNodeOperator(bpy.types.Operator):
+    bl_idname = "object.link_selected_image_to_environment_node"
+    bl_label = "Link Selected Image to Environment Node"
+    bl_options = {'UNDO'}
+    
+    def execute(self, context):
+        # Obtém o índice da imagem selecionada
+        selected_index = context.scene.image_list_index
+        
+        # Obtém o nó Environment Texture chamado "World-HDRI-Node"
+        world = bpy.context.scene.world
+        hdri_texture_node = world.node_tree.nodes.get("World-HDRI-Node")
+        
+        # Verifica se o nó Environment Texture foi encontrado
+        if hdri_texture_node:
+            # Tenta encontrar a imagem pelo nome
+            selected_image = context.scene.image_list[selected_index]
+            image = bpy.data.images.get(selected_image.name)
+            
+            # Conecta a imagem ao nó Environment Texture
+            if image:
+                hdri_texture_node.image = image
+            else:
+                self.report({'ERROR'}, f"Imagem '{selected_image.name}' não encontrada.")
+        else:
+            self.report({'ERROR'}, "Nó de textura de ambiente 'World-HDRI-Node' não encontrado.")
+        
+        return {'FINISHED'}
+    
+    
+    
+####### Image List OPERATOR START
+
+class IMAGE_OT_SelectFromList(bpy.types.Operator):
+    bl_idname = "object.select_image_from_list"
+    bl_label = "Select Image"
+    
+    
+    index: bpy.props.IntProperty()  # Defina o atributo como uma anotação de tipo
+    
+    def execute(self, context):
+        context.scene.image_list_index = self.index
+        return {"FINISHED"}
+
+
+####### Image List OPERATOR END
+    
+
+####### Image List OPERATOR END CHAT GPT
+
+"""-------------------------------------------------------------------------------------"""
+    
+####### Define Selected OPERATOR START CHAT GPT    
+
+class selectedButton(bpy.types.PropertyGroup):
+    name: bpy.props.StringProperty()
+    selected = bpy.props.BoolProperty(default=False)
+    
+"""-------------------------------------------------------------------------------------"""    
+
+
+class IMAGE_PT_ImageInfo(bpy.types.PropertyGroup):
+
+    name = bpy.props.StringProperty()   #Store Image Name
+    width = bpy.props.IntProperty()     #Store Image width 
+    height = bpy.props.IntProperty()    #Store Image height
+    
+
+"""-------------------------------------------------------------------------------------"""    
+
+####### Filter OPERATOR START CHAT GPT      
+
+class IMAGE_OT_FilterImageButton(bpy.types.Operator):
+    bl_idname = "object.filter_image_button"
+    bl_label = "Simple Operator"
+
+    filter_image_button: bpy.props.BoolProperty()
+
+    def execute(self, context):
+        if self.filter_image_button:
+            self.report({'INFO'}, 'Boolean ativado!')
+        else:
+            self.report({'INFO'}, 'Boolean desativado!')
+        return {'FINISHED'}
+
+
+"""-------------------------------------------------------------------------------------"""
+#
+#
+
+#                                                        """    _________________Panels_________________    """
+#
+#
+#
+#
+#
+#
+#
+  
+
+    
+class RENDER_PT_resolutionHelper(bpy.types.Panel):
+    bl_idname = "RENDER_PT_resolutionHelper"
+    bl_label = "Resolution Helper"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    
+    def draw(self, context):
+        
+        #Define Information
+        res_percentage = context.scene.render.resolution_percentage
+        res_x = context.scene.render.resolution_x 
+        res_y = context.scene.render.resolution_y  
+        render_settings = context.scene.render
+        final_res_x = int(res_x * (res_percentage/100))
+        final_res_y = int(res_y * (res_percentage/100))
+                
+        #Draw UI Grid
+        
+        layout = self.layout
+        layout.label(text="Render Resolution")
+
+        #Define Grid Size
+        grid = layout.grid_flow(row_major=True, columns=2)
+        
+        #Display Render Resolution
+        grid.label(text="Resolution X:")
+        grid.prop(render_settings, "resolution_x", text="")
+        grid.label(text="Resolution Y:")
+        grid.prop(render_settings, "resolution_y", text="")
+        
+        grid = layout.grid_flow(row_major=True, columns=1)
+        
+        grid.operator("render.res_flip", text="Flip Resolution")
+        
+        #Display Percentage Slider
+        grid.prop(render_settings, "resolution_percentage", text="Percentage")
+                
+        grid = layout.grid_flow(row_major=True, columns=2)
+        
+        #Show Final Resolution
+        grid.label(text="Final Resolution")
+        grid.label(text="")
+        grid.label(text="X")
+        grid.label(text=str(final_res_x))
+        grid.label(text="Y")
+        grid.label(text=str(final_res_y))
+        
+#Get Image Information
+
+       
+class IMAGE_PT_ImageListsPanel(bpy.types.Panel):
+    bl_idname = "IMAGE_PT_ImageListsPanel"
+    bl_label = "Image Lists"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+
+    def draw(self, context):
+        layout = self.layout
+        scene = context.scene
+
+        # Botão para alternar entre as duas listas
+        layout.prop(scene, "filter_image_button", text="Filter Images")
+
+        # Botão para atualizar as listas de imagens
+        layout.operator("object.update_image_lists", text="Update Image Lists")
+
+        # Determinar qual lista usar
+        image_list = scene.filtered_images if scene.show_filtered_images else scene.image_list
+
+        for idx, item in enumerate(image_list):
+            row = layout.row(align=True)
+            row.label(text=f"{item.name}", icon='IMAGE_RGB')
+            depress = idx == scene.image_list_index
+            row.scale_x = 0.3
+            row.operator("object.select_image_from_list", text="Select", emboss=True, depress=depress).index = idx
+
+        grid = layout.grid_flow(row_major=True, columns=2)
+        grid.operator("object.open_image_file_browser", text="Browse")
+        grid.operator("object.update_image_list", text="Update")
+        grid = layout.grid_flow(row_major=True, columns=1)
+        grid.operator("object.link_selected_image_to_environment_node", text="Link to Environment Node")
+
+
+###
+### Node Editor Panel
+
+
+class NODE_PT_Shader_Utilities_Panel(bpy.types.Panel):
+    bl_idname = "NODE_PT_Shader_Utilities_Panel"
+    bl_label = "Shader Utilities"
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "NodeMaster Toolkit"
+    
+   # Draw Dropdown Menu
+    def draw(self, context):
+        layout = self.layout
+        layout.label(text="Add Group Sockets")
+        
+         # Add Boolean Button
+        self.layout.operator("node.add_boolean_socket", text="Add Boolean Button")
+    
+        # Add Integer Button
+        self.layout.operator("node.add_integer_socket", text="Add Integer Button")
+
+
+
+
+
+"""-------------------------------------------------------------------------------------"""
+#
+#
+#
+#
+#
+#
+#
+# Define list of Operator Type classes to be registered
+
+classes_OT = [
+RENDER_OT_Res_Flip, 
+NODE_OT_AddBoolSocket, 
+NODE_OT_AddIntegerSocket, 
+RENDER_OT_Perfcentage,
+IMAGE_OT_SelectFromList,
+OpenImageFileBrowserOperator,
+UpdateImageListOperator,
+LinkSelectedImageToEnvironmentNodeOperator,
+selectedButton,
+IMAGE_OT_FilterImageType,
+IMAGE_OT_FilterImageButton
+]
+
+# Define list of Panel Type classes to be registered
+
+classes_PT = [
+RENDER_PT_resolutionHelper, 
+NODE_PT_Shader_Utilities_Panel, 
+IMAGE_PT_ImageListsPanel, 
+IMAGE_PT_ImageInfo
+]
+
+all_classes = classes_OT + classes_PT #Join both Lists Together
+
+def register():
+    for cls in all_classes:
+        bpy.utils.register_class(cls)
+        
+    bpy.types.Scene.image_list = bpy.props.CollectionProperty(type=IMAGE_PT_ImageInfo)
+    bpy.types.Scene.image_list_index = bpy.props.IntProperty()
+    
+    bpy.types.Scene.image_list_index = bpy.props.IntProperty(default=0)
+    
+    #REgister filter image button
+    bpy.types.Scene.filter_image_button = bpy.props.BoolProperty()
+
+def unregister():
+    for cls in all_classes:
+        bpy.utils.unregister_class(cls)
+
+    del bpy.types.Scene.image_list
+    del bpy.types.Scene.image_list_index
+    
+    
+    del bpy.types.Scene.image_list_index
+    del bpy.types.Scene.image_list
+    del bpy.types.Scene.filtered_images
+    # Unregister filter image button
+    del bpy.types.Scene.my_bool
+    
+    
+if __name__ == "__main__":
+    register()
+
+
+
+    USAR EM TOOL GEOIMETRY NODES
+
+        if context.space_data.geometry_nodes_type == 'TOOL':
+            layout.operator("seu_operador", text="Seu Botão")
+        else:
+            layout.label(text="Botão Indisponível neste Contexto")
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Remover a parte de thumbnail
+
+'''
+
+
+
+
+
+
+
+
+
+
+#        for idx, item in enumerate(image_list):  #original image_list
+ #           row = box.row(align=True)
+  #          row.label(text=f"{item.name}", icon='IMAGE_RGB')
+   #                 
+    #        if idx == context.scene.image_list_index:
+     #           depress = True
+      #      else:
+       #         depress = False
+            
+            # Adiciona o operador com o botão de pressionado ou não  CHAT GPT
+          #  row.operator("object.select_image_from_list", text="Select", emboss=True, depress=depress).index = idx
+          
+        
